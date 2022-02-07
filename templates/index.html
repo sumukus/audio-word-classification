@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>ISL Exam</title>
+</head>
+<body>
+	<div style="background-color: skyblue; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); padding: 20px; box-shadow: 10px 10px grey; text-align: center;">
+		<h1 style="">Audio Word Classification Model</h1>
+		<hr>
+		<style type="text/css">
+
+			.button{
+				border-radius: 25px;
+				transition: 0.5s;
+				box-shadow: 10px 10px 15px grey;
+				font-size: 15px;
+				padding: 10px;
+			}
+
+			.button:hover{
+				background-color: green;
+				color: white;
+			}
+
+		</style>
+
+		<form action="/" method="post">
+			<label> Speak a word within 3 seconds</label><br><br>
+			<input class="button" type="submit" value="Start Recodring" name = "record"><br><br>
+			{% if record_status != 1 %}
+			<audio controls>
+				<source src="static/test_audio.wav" type="audio/wav">
+			</audio><br><br>
+			{% endif %}
+			<input class="button" type="submit" value="Run Model" name = "model"><br><br>
+
+		</form>
+
+		{% if model_status != 1%}
+		<h2>Model detected audio word as {{ model_status }}</h2>
+		<a href="{{url_for('index')}}"><button class="button" > Clear Result</button></a>
+		{% endif %}
+
+		<marquee style="color: red;"> 
+			Click on start recording button. Then speak a single word. Recorded audio will be shown below.
+		</marquee>
+		
+	</div>
+
+</body>
+</html>
