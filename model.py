@@ -41,17 +41,6 @@ def buildModel():
 			mfccs_feature = mfccs_feature.flatten()
 			X.append(mfccs_feature)
 			y.append(audio_cls)
-			#noise
-			noise1 = audio + 0.5
-			noise2 = audio - 0.5
-			noise1_feature = librosa.feature.mfcc(y=noise1, sr=freq)
-			noise1_feature = noise1_feature.flatten()
-			noise2_feature = librosa.feature.mfcc(y=noise2, sr=freq)
-			noise2_feature = noise2_feature.flatten()
-			X.append(noise1_feature)
-			y.append("None")
-			X.append(noise2_feature)
-			y.append("None")
 			print("Building Model.....")
 
 
